@@ -1,34 +1,27 @@
 import React, { useState } from 'react';
+import { User } from '../types';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { ProfileContainer, SideNav, UserInfo, Avatar, UserName, UserEmail, Button } from '../styles/ProfileStyled';
+import { ProfileContainer, SideNav, UserInfo, Avatar, UserName, UserEmail, Button, ActivitiesContainer } from '../styles/ProfileStyled';
 
 import MyActivities from '../components/MyActivities';
 import Favorites from '../components/Favorites';
 import PublishActivity from '../components/PublishActivity';
 import EditProfile from '../components/EditProfile';
 
-// 定义用户类型
-type User = {
-    name: string;
-    email: string;
-    avatarUrl: string;
-};
-
-// 组件 props 的类型
 type ProfileProps = {
-    user: User;
+  user: User;
 };
 
 
 const Profile: React.FC<ProfileProps> = ({ user }) => {
-    const [activeSection, setActiveSection] = useState('userInfo');
+  const [activeSection, setActiveSection] = useState<string>('my-activities');
 
   // 渲染不同的部分
   const renderSection = () => {
     switch (activeSection) {
       case 'my-activities':
-        return <MyActivities />;
+        return <MyActivities user={user}/>;
       case 'favorites':
         return <Favorites />;
       case 'publish':
@@ -55,7 +48,9 @@ const Profile: React.FC<ProfileProps> = ({ user }) => {
         <Button onClick={() => setActiveSection('edit-profile')}>修改个人信息</Button>
         {/* 其他侧边导航链接 */}
       </SideNav>
-      {renderSection()}
+      <ActivitiesContainer>
+        {renderSection()}
+      </ActivitiesContainer>
     </ProfileContainer>
   );
 };

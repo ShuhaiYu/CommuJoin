@@ -2,6 +2,8 @@ import styled from 'styled-components';
 
 export const ProfileContainer = styled.div`
   display: flex;
+  min-height: 100vh;
+  align-items: flex-start; 
   @media (max-width: 768px) {
     flex-direction: column;
   }
@@ -13,6 +15,23 @@ export const SideNav = styled.nav`
   padding: 20px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   background-color: #f8f9fa; // 添加背景颜色
+`;
+
+export const ActivitiesContainer = styled.div`
+  flex-grow: 1; // Grow to fill the available space
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  // A margin is added to not stick to the SideNav
+  margin-left: 20px;
+
+  h2 {
+    color: #007bff;
+    margin-bottom: 20px;
+  }
+
+  // ...other styles for child elements
 `;
 
 export const UserInfo = styled.div`

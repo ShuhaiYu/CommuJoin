@@ -9,16 +9,18 @@ import ActivityDetails from './pages/ActivityDetails';
 const mockUser = {
   name: '张三',
   email: 'zhangsan@example.com',
-  avatarUrl: 'https://via.placeholder.com/150'
+  avatarUrl: 'https://via.placeholder.com/150',
+  activitiesId: ['1', '2', '3'],
+  favoritesId: ['2', '4'],
 };
 
 const App = () => {
   return (
     <Router>
-      <NavBar user={mockUser} /> {/* 添加 NavBar 并传入 mockUser */}
+      <NavBar user={mockUser} /> 
       <Routes>
-        <Route path="/" element={<Home />} /> {/* 注意这里是 element，不是 Component */}
-        <Route path="/profile" element={<Profile user={mockUser} />} /> {/* 传递 mockUser 为 prop 到 Profile */}
+        <Route path="/" element={<Home />} /> 
+        <Route path="/profile" element={<Profile user={mockUser} />} /> 
         <Route path="/activity/:activityId" element={<ActivityDetails />} />
         {/* <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} /> */}
